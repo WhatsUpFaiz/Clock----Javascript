@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+       body {
+    margin: 0;
+    font-family: 'Roboto';
+    background: linear-gradient(135deg, #dbdbdb, #2d2d2d);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#clock-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgb(0, 0, 0);
+}
+
+#clock {
+    font-size: 60px;
+    color: #333;
+    background: #fff;
+    padding: 20px 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+    </style>
+    <div id="clock-container">
+<div id="clock">00:00:00</div>
+    </div>
+
+
+
+    <script>
+        function getTime(){
+            const date= new Date();
+            let hours = date.getHours();
+            const meriduim= hours >=12 ? 'AM':"PM";
+            hours = hours % 12 || 12
+            const minutes =date.getMinutes();
+            const seconds = date.getSeconds();
+            const string = `${hours}:${minutes}:${seconds}:${meriduim}`
+    document.getElementById("clock").textContent=string
+        }
+        getTime()
+        setInterval(getTime,1000)
+    </script>
+</body>
+</html>
